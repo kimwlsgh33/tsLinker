@@ -3,8 +3,13 @@
     "name": "bare_project",
     "slug": "bare_project",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "android": {},
+    "ios": {
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to use the camera",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to use the microphone"
+      }
+    }
   }
 }
