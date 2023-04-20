@@ -37,7 +37,6 @@ export default function Login() {
           postWithJWT(getHostUrl('/auth/login'), {email, name, password}, jwt)
             .then((res) => res.json())
             .then((result) => {
-              console.log(result)
               const {success, provider, name, message} = result
 
               // 로그인 성공시,
@@ -57,6 +56,11 @@ export default function Login() {
 
     [email, name, password]
   )
+
+  const goHomeNavigator = useCallback(() => {
+    console.log('what')
+    navigation.navigate('HomeNavigator')
+  }, [])
 
   const goSignUp = useCallback(() => navigation.navigate('SignUp'), [])
 

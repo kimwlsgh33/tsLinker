@@ -1,14 +1,15 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
 import {useDispatch, useSelector} from 'react-redux'
 import type {TypedUseSelectorHook} from 'react-redux'
-import {loginSlice} from './slice'
+import {imageSlice, loginSlice} from './slice'
 import logger from 'redux-logger'
 import {storageSlice} from './slice/storageSlice'
 
 export const store = configureStore({
   reducer: {
     login: loginSlice.reducer,
-    storage: storageSlice.reducer
+    storage: storageSlice.reducer,
+    image: imageSlice.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

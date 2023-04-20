@@ -43,6 +43,7 @@ export default function SignUp() {
               dispatch(signUpJWT(jwt))
               dispatch(signUp({email, name, password}))
               // Tab으로 이동
+              Alert.alert(`환영합니다. ${name}님`)
               navigation.navigate('TabNavigator')
             })
             .catch((err) => Alert.alert(err.message))

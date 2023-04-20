@@ -7,8 +7,9 @@
     "android": {},
     "ios": {
       "infoPlist": {
-        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to use the camera",
-        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to use the microphone"
+        "NSCameraUsageDescription": "Give $(PRODUCT_NAME) permission to access your camera",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to use the microphone",
+        "NSPhotoLibraryUsageDescription": "Give $(PRODUCT_NAME) permission to save photos"
       }
     }
   }

@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react'
 import {Alert, StyleSheet} from 'react-native'
 import {ScrollEnabledProvider} from '../context'
-import {useNavigation, useRoute} from '@react-navigation/native'
+import {useNavigation} from '@react-navigation/native'
 import {LeftRightNavigation} from '../components'
 import {
   NavigationHeader,
@@ -10,11 +10,12 @@ import {
   MyText,
   MaterialCommunityIcon as Icon
 } from '../theme'
-import {useAppSelector} from '../store'
+import {useAppDispatch, useAppSelector} from '../store'
+import * as U from '../utils'
+import {removeJWT, selectJWT} from '../store/slice'
 
 export default function Home() {
   const navigation = useNavigation()
-  const route = useRoute()
   const goBack = useCallback(
     () => navigation.canGoBack() && navigation.goBack(),
     []
@@ -23,7 +24,9 @@ export default function Home() {
     () => navigation.canGoBack() && navigation.goBack(),
     []
   )
-  const {signUpJWT} = useAppSelector(({storage}) => storage)
+  const signUpJWT = useAppSelector(selectJWT)
+
+  const dispatch = useAppDispatch()
 
   return (
     <MySafeAreaView>
@@ -38,7 +41,14 @@ export default function Home() {
               <Icon
                 name="shield-airplane"
                 size={30}
-                onPress={() => Alert.alert('menu pressed')}
+                onPress={() =>
+                  U.removeToStorage('signUpJWT')
+                    .then(() => {
+                      dispatch(removeJWT())
+                      Alert.alert('JWT removed')
+                    })
+                    .catch(() => Alert.alert("can't remove"))
+                }
               />
             )}
           />

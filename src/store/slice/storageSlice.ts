@@ -15,10 +15,11 @@ export const storageSlice = createSlice({
   reducers: {
     signUpJWT: (state, action: PayloadAction<string>) => {
       state.signUpJWT = action.payload
-    }
+    },
+    removeJWT: () => initialState
   }
 })
 
-export const {signUpJWT} = storageSlice.actions
+export const {signUpJWT, removeJWT} = storageSlice.actions
 
-export const selectStorage = (state: RootState) => state.storage.signUpJWT
+export const selectJWT = (state: RootState) => state.storage.signUpJWT
